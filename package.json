@@ -1,0 +1,24 @@
+{
+  "name": "ingredient",
+  "version": "0.0.1",
+  "description": "recipe search",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jharwood0/ingredient.git"
+  },
+  "keywords": [
+    "recipe",
+    "search",
+    "node"
+  ],
+  "author": "jharwood0",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jharwood0/ingredient/issues"
+  },
+  "homepage": "https://github.com/jharwood0/ingredient#readme"
+}
