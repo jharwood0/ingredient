@@ -2,6 +2,8 @@ const fs = require('fs');
 const request = require('request');
 const cheerio = require('cheerio');
 
+const baseUrl = "https://www.bbcgoodfood.com";
+
 function parseRecipe(url){
   console.log(url);
 }
@@ -29,10 +31,5 @@ function visitPage(url){
   });
 }
 
-baseUrl = "https://www.bbcgoodfood.com";
-
 /* Parse first page */
-let finished = false;
-let url = baseUrl + "/search?query=";
-
-visitPage(url);
+visitPage(baseUrl + "/search?query=");
