@@ -36,7 +36,39 @@ function parseRecipe(url){
     });
     recipe.cook_time = recipe.cook_time.replace("Cook: ", "").trim();
     /* skill */
-    recipe.skill = $("section.recipe-details__item recipe-details__item--skill-level").find("span.recipe-details__text").text();
+    recipe.skill = $("section.recipe-details__item.recipe-details__item--skill-level").find("span.recipe-details__text").text().trim();
+    /* serving */
+    recipe.serving = $("section.recipe-details__item.recipe-details__item--servings").find("span.recipe-details__text").text().trim();
+    /* nutrition */
+    // TODO: convert this to json
+    recipe.nutrition = "";
+    $("ul.nutrition").children().each(function(){
+      $(this).children().each(function(){
+        recipe.nutrition += $(this).text().trim() + " ";
+      });
+    });
+    /* ingredients */
+    recipe.ingredients = [];
+    let ignores = [];
+    $("a.ingredients-ingredients-list__glossary-link").each(function(){
+      print($(this));
+      ignores.push($(this).text());
+    });
+    console.log(ignores);
+    $("div.ingredients-list__content").find("li.ingredients-list__item").each(function(){
+      if($(this).children().length != 0){
+        console.log("Special thing");
+      }
+      recipe.ingredients.push($(this).text());
+    });
+    let parsedIngredients = [];
+    for(ingredient of recipe.ingredients){
+      for(ignore of ignores){
+        console.log()
+        parsedIngredients.push(ingredient.replace(ignore, ""));
+      }
+    }
+    recipe.ingredients = parsedIngredients;
     console.log(recipe);
   });
 }
